@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amirhossein Yavari</title>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Academicons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    
+    <!-- js-yaml library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+    <style>
+        /* Font imports */
+        @font-face {
+            font-family: 'Crimson Pro';
+            font-style: italic;
+            font-weight: 500;
+            font-display: swap;
+            src: url(https://fonts.gstatic.com/s/crimsonpro/v24/q5uSsoa5M_tv7IihmnkabAReu49Y_Bo-HVKMBi6me5s7.ttf) format('truetype');
+        }
+        @font-face {
+            font-family: 'Crimson Pro';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url(https://fonts.gstatic.com/s/crimsonpro/v24/q5uUsoa5M_tv7IihmnkabC5XiXCAlXGks1WZzm18OA.ttf) format('truetype');
+        }
+        @font-face {
+            font-family: 'Ubuntu Mono';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url(https://fonts.gstatic.com/s/ubuntumono/v17/KFOjCneDtsqEr0keqCMhbBc9.ttf) format('truetype');
+        }
+    
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #24292f;
+            --text-secondary: #57606a;
+            --link-color: #0969da;
+            --border-color: #d0d7de;
+            --heading-color: #2c5282;
+            --section-heading-color: #4a5568;
+            --title-color: #2d3748;
+            --badge-acl: #ddf4ff;
+            --badge-acl-text: #0969da;
+            --badge-emnlp: #fff8c5;
+            --badge-emnlp-text: #9a6700;
+            --badge-neurips: #f6f8fa;
+            --badge-neurips-text: #24292f;
+            --nav-hover: #f6f8fa;
+            --paper-bg: #ffffff;
+            --paper-shadow: rgba(0, 0, 0, 0.1);
+            --font-family-base: 'Crimson Pro', serif;
+            --font-family-mono: 'Ubuntu Mono', monospace;
+        }
+    
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #0d1117;
+                --text-color: #c9d1d9;
+                --text-secondary: #8b949e;
+                --link-color: #58a6ff;
+                --border-color: #30363d;
+                --heading-color: #90cdf4;
+                --section-heading-color: #e2e8f0;
+                --title-color: #cbd5e0;
+                --badge-acl: #1d4ed8;
+                --badge-acl-text: #bfdbfe;
+                --badge-emnlp: #854d0e;
+                --badge-emnlp-text: #fef3c7;
+                --badge-neurips: #21262d;
+                --badge-neurips-text: #c9d1d9;
+                --nav-hover: #21262d;
+                --paper-bg: #161b22;
+                --paper-shadow: rgba(0, 0, 0, 0.3);
+            }
+        }
+    
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    
+        body {
+            font-family: var(--font-family-base);
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            padding: 0 20px;
+        }
+    
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+    
+        /* Header Styles */
+        .header-container {
+            display: flex;
+            gap: 70px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            align-items: center;
+            padding: 30px 0;
+        }
+    
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid var(--border-color);
+        }
+    
+        .header-content {
+            flex: 1;
+            max-width: 800px;
+        }
+    
+        .header-content h1 {
+            font-size: 1.7rem;
+            margin: 0 0 0.5rem 0;
+            color: var(--heading-color);
+        }
+    
+        .position, .email {
+            font-size: 0.9rem;
+            margin: 0.25rem 0;
+            color: var(--text-secondary);
+        }
+    
+        .email {
+            font-family: var(--font-family-mono);
+        }
+    
+        /* Base link styles */
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+            position: relative;
+            transition: color 0.2s ease;
+        }
+    
+        /* General link hover effect */
+        a:not(.pub-link):not(.social-icons a):not(.navbar a):not(.pub-title a)::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--link-color);
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease;
+        }
+    
+        a:not(.pub-link):not(.social-icons a):not(.navbar a):not(.pub-title a):hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+    
+        /* Social Icons */
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin: 15px 0;
+        }
+    
+        .social-icons a {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            transition: color 0.2s ease;
+        }
+    
+        .social-icons a:hover {
+            color: var(--link-color);
+        }
+    
+        /* Navigation */
+        .navbar {
+            margin: 20px 0;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+    
+        .navbar a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-right: 30px;
+            font-size: 15px;
+            padding: 5px 10px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+    
+        .navbar a:hover {
+            background-color: var(--nav-hover);
+            color: var(--link-color);
+        }
+    
+        /* Main Content */
+        .main-content {
+            max-width: 900px;
+        }
+    
+        h2 {
+            color: var(--section-heading-color);
+            font-size: 22px;
+            margin: 40px 0 20px 0;
+        }
+    
+        /* News Section */
+        .news-item {
+            margin-bottom: 15px;
+            display: flex;
+            gap: 20px;
+        }
+    
+        .date {
+            color: var(--text-secondary);
+            min-width: 100px;
+        }
+    
+        /* Publications Styles */
+        .publications-list {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+    
+        .publication {
+            display: flex;
+            gap: 30px;
+            background: var(--paper-bg);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+    
+        .pub-image {
+    flex: 0 0 200px; /* Fixed width */
+    height: 150px; /* Fixed height */
+    margin-right: 20px;
+    overflow: hidden; /* Hide overflow */
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+}
+
+.pub-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This will maintain aspect ratio while filling the container */
+    object-position: center; /* Center the image within the container */
+    transition: transform 0.3s ease;
+}
+
+
+/* Update mobile responsive styling */
+@media (max-width: 768px) {
+    .pub-image {
+        width: 100%;
+        height: 200px; /* Taller on mobile */
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+}    
+        .pub-content {
+            flex: 1;
+        }
+    
+        .pub-title {
+            font-size: 1em;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+    
+        .pub-title a {
+            color: var(--heading-color);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            font-size: 1.2em;
+            font-weight: 600;
+            position: relative;
+        }
+    
+        .pub-title a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--heading-color);
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease;
+        }
+    
+        .pub-title a:hover {
+            color: var(--link-color);
+        }
+    
+        .pub-title a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+            background-color: var(--link-color);
+        }
+    
+        .pub-authors {
+            color: var(--text-color);
+            font-size: 0.95em;
+            margin-bottom: 10px;
+        }
+    
+        .pub-authors a {
+            color: var(--text-color);
+            position: relative;
+            transition: color 0.2s ease;
+        }
+    
+        .pub-authors a:hover {
+            color: var(--link-color);
+        }
+    
+        .pub-meta {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+    
+        .pub-badge {
+            font-size: 0.85em;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+    
+        .pub-badge.acl,
+        .pub-badge.findings {
+            background: var(--badge-acl);
+            color: var(--badge-acl-text);
+        }
+    
+        .pub-badge.emnlp {
+            background: var(--badge-emnlp);
+            color: var(--badge-emnlp-text);
+        }
+    
+        .pub-badge.colm,
+        .pub-badge.icalp,
+        .pub-badge.preprint {
+            background: var(--badge-neurips);
+            color: var(--badge-neurips-text);
+        }
+    
+        .pub-links {
+            display: flex;
+            gap: 10px;
+        }
+    
+        .pub-link {
+            color: var(--link-color);
+            text-decoration: none;
+            font-size: 0.9em;
+            padding: 4px 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+    
+        .pub-link:hover {
+            background-color: var(--link-color);
+            color: var(--bg-color);
+            border-color: var(--link-color);
+        }
+    
+        .pub-awards {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+    
+        .award-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.85em;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 500;
+            background: #fff3dc;
+            color: #b45309;
+        }
+    
+        .award-badge.best-poster {
+            background: #fef3c7;
+            color: #92400e;
+        }
+    
+        .award-badge.top-paper {
+            background: #ecfdf5;
+            color: #065f46;
+        }
+    
+        .award-badge i {
+            font-size: 0.9em;
+        }
+    
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 0;
+            }
+    
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+    
+            .social-icons {
+                justify-content: center;
+            }
+    
+            .navbar {
+                text-align: center;
+            }
+    
+            .navbar a {
+                margin: 0 15px;
+            }
+    
+            .publication {
+                flex-direction: column;
+            }
+    
+            .pub-image {
+                width: 100%;
+                height: 200px;
+                margin-right: 0;
+                margin-bottom: 15px;
+                max-width: 100%;
+            }
+        }
+    
+        /* Dark mode support for award badges */
+        @media (prefers-color-scheme: dark) {
+            .award-badge {
+                background: #3f2d1b;
+                color: #fbbf24;
+            }
+    
+            .award-badge.best-poster {
+                background: #422006;
+                color: #fbbf24;
+            }
+    
+            .award-badge.top-paper {
+                background: #064e3b;
+                color: #34d399;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header-container">
+            <img src="assets/images/profilen.jpg" alt="Profile Photo" class="profile-img">
+            <div class="header-content">
+                <h1>Amirhossein Yavari<span class="job-market"></span></h1>
+                <p class="position">PhD Student at University of Oklahoma</p>
+                <p class="email">amirhossein.yavari (at) ou.edu</p>
+                
+                <div class="social-icons">
+                    <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank">
+                        <i class="ai ai-google-scholar"></i>
+                    </a>
+                    <a href="assets/files/cv.pdf" target="_blank">
+                        <i class="ai ai-cv"></i>
+                    </a>
+                    <a href="https://github.com/amrhosseiny" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/amirhossein-y-6ba230102/" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://x.com/ahyavari" target="_blank">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Navigation -->
+        <nav class="navbar">
+            <a href="#about">about</a>
+            <a href="#news">news</a>
+            <a href="#publications">publications</a>
+            <!-- <a href="#projects">projects</a> -->
+        </nav>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- About Section -->
+            <section id="about">
+                <h2>About Me</h2>
+                <p style="margin-bottom: 20px;">I am a PhD student in the Stephenson School of Biomedical Engineering at the University of Oklahoma, where I have the privilege of being advised by <a href="https://farnazzamani.com/" target="_blank">Professor. Farnaz Zamani</a>. My research focuses on computational and theoretical neuroscience as well as machine learning. Prior to this, I completed my undergraduate studies in Mathematics and its Applications at Sharif University of Technology.</p>
+                <p>My interests include studying memory and attention, as well as understanding the encoding and decoding processes in both natural and artificial neural networks. More broadly, I aim to deepen our understanding of human agency and to align artificial intelligence systems with it.</p>
+
+            </section>
+
+            <!-- News Section -->
+            <section id="news">
+                <h2>News</h2>
+                <div class="news-item">
+                    <span class="date">Sep 2024</span>
+                    <div class="news-content">Started PhD at University of Oklahoma</div>
+                </div>
+                <!-- Add more news items as needed -->
+            </section>
+
+            <!-- Publications Section -->
+            <section id="publications">
+                <h2>Selected Publications</h2>
+                <div id="publications-container">
+                    <!-- Publications will be loaded here dynamically -->
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <!-- <section id="projects"> -->
+                <!-- <h2>Projects</h2> -->
+                <!-- Add your projects content here -->
+            <!-- </section> -->
+        </div>
+    </div>
+
+    <script>
+        async function parseAuthors(authors) {
+            if (!Array.isArray(authors)) return '';
+            
+            return authors.map((author, index) => {
+                const authorHTML = author.url ? 
+                    `<a href="${author.url}" target="_blank">${author.name}</a>` : 
+                    author.name;
+                    
+                return authorHTML + (index < authors.length - 1 ? ', ' : '');
+            }).join('');
+        }
+        async function loadPublications() {
+    try {
+        const response = await fetch('publications.yml');
+        if (!response.ok) throw new Error('Failed to load publications.yml');
+        
+        const yamlText = await response.text();
+        const publications = jsyaml.load(yamlText).main;
+        
+        const container = document.getElementById('publications-container');
+        container.innerHTML = '';
+        
+        const listDiv = document.createElement('div');
+        listDiv.className = 'publications-list';
+        
+        for (const pub of publications) {
+            const pubDiv = document.createElement('div');
+            pubDiv.className = 'publication';
+            
+            // Check if image exists and handle both local and remote URLs
+            const hasImage = pub.image && pub.image.length > 0;
+            const imageUrl = pub.image?.startsWith('./') ? 
+                pub.image.substring(2) : // Remove './' from local paths
+                pub.image;
+            
+            let innerHTML = '';
+            if (hasImage) {
+                innerHTML += `
+                    <div class="pub-image">
+                        <img src="${imageUrl}" alt="${pub.title}" onerror="this.style.display='none'">
+                    </div>
+                `;
+            }
+            
+            // Generate awards HTML if awards exist
+            const awardsHTML = pub.awards ? `
+                <div class="pub-awards">
+                    ${pub.awards.map(award => `
+                        <span class="award-badge ${award.type}">
+                            ${award.type === 'best-poster' ? '<i class="fas fa-award"></i>' : ''}
+                            ${award.type === 'top-paper' ? '<i class="fas fa-star"></i>' : ''}
+                            ${award.text}
+                        </span>
+                    `).join('')}
+                </div>
+            ` : '';
+            
+            innerHTML += `
+                <div class="pub-content">
+                    <div class="pub-title">
+                        ${pub.pdf ? 
+                            `<a href="${pub.pdf}" target="_blank">${pub.title}</a>` : 
+                            pub.title
+                        }
+                    </div>
+                    <div class="pub-authors">${await parseAuthors(pub.authors)}</div>
+                    <div class="pub-meta">
+                        <span class="pub-badge ${pub.conference_short.toLowerCase()}">${pub.conference}</span>
+                        ${awardsHTML}
+                    </div>
+                    <div class="pub-links">
+                        ${pub.pdf ? `<a href="${pub.pdf}" class="pub-link" target="_blank">PDF</a>` : ''}
+                        ${pub.page ? `<a href="${pub.page}" class="pub-link" target="_blank">Project</a>` : ''}
+                        ${pub.code ? `<a href="${pub.code}" class="pub-link" target="_blank">Code</a>` : ''}
+                    </div>
+                </div>
+            `;
+            
+            pubDiv.innerHTML = innerHTML;
+            listDiv.appendChild(pubDiv);
+        }
+        
+        container.appendChild(listDiv);
+    } catch (error) {
+        console.error('Error loading publications:', error);
+        document.getElementById('publications-container').innerHTML = 
+            '<p>Error loading publications. Please check the console for details.</p>';
+    }
+}
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Load publications when the page loads
+        window.addEventListener('load', loadPublications);
+    </script>
+</body>
+</html>
