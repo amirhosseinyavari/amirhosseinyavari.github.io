@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AmirHossein Yavari</title>
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,22 +18,84 @@
 
     <!-- Your Custom Stylesheet -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- ✅ Site config toggle (edit this later) -->
+    <script>
+      window.SITE_CONFIG = {
+        showPublications: false
+      };
+    </script>
+
+    <!-- ✅ Minimal additions: cleaner backgrounds + dotted background overlay -->
+    <style>
+        /* --- Slightly tinted (less muddy) base backgrounds --- */
+        :root{
+            --page-bg: #f6f6f8;         /* cleaner light background */
+            --dot-color: rgba(25, 28, 32, 0.08);
+            --vignette: rgba(0, 0, 0, 0.04);
+        }
+        @media (prefers-color-scheme: dark){
+            :root{
+                --page-bg: #1e242b;     /* a touch lighter than pure dark */
+                --dot-color: rgba(255, 255, 255, 0.07);
+                --vignette: rgba(0, 0, 0, 0.28);
+            }
+        }
+
+        html, body{
+            background: var(--page-bg);
+        }
+
+        /* --- Dot overlay (evenly spaced) --- */
+        body{
+            position: relative; /* anchors the pseudo elements */
+        }
+        body::before{
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+
+            background-image: radial-gradient(circle, var(--dot-color) 1px, transparent 1px);
+            background-size: 22px 22px;
+            background-position: 0 0;
+        }
+
+        /* subtle vignette (very light) */
+        body::after{
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+
+            background: radial-gradient(ellipse at center,
+                rgba(0,0,0,0) 0%,
+                rgba(0,0,0,0) 55%,
+                var(--vignette) 100%);
+        }
+
+        /* keep your actual content above the background overlays */
+        .container, .site-footer{
+            position: relative;
+            z-index: 1;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <!-- Header Section -->
         <header class="header-container">
-            <img src="assets/images/profilen.jpg" alt="Profile Photo" class="profile-img">
+            <img src="assets/images/profile.jpeg" alt="Profile Photo" class="profile-img">
             <div class="header-content">
                 <h1>AmirHossein Yavari</h1>
-                <p class="position">PhD Student at University of Oklahoma</p>
+                <p class="position">PhD Student (Biomedical Engineering), University of Oklahoma</p>
                 <p class="email">amirhossein.yavari (at) ou.edu</p>
 
                 <div class="social-icons">
-                    <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank" aria-label="Google Scholar">
-                        <i class="ai ai-google-scholar"></i>
-                    </a>
-                    <a href="assets/files/CV_Amirhossein_Yavari.pdf" target="_blank" aria-label="CV">
+                    <!-- Google Scholar removed (not active yet) -->
+                    <a href="assets/files/Amirhossein__CV.pdf" target="_blank" aria-label="CV">
                         <i class="ai ai-cv"></i>
                     </a>
                     <a href="https://github.com/amirhosseinyavari" target="_blank" aria-label="GitHub">
@@ -42,7 +104,7 @@
                     <a href="https://www.linkedin.com/in/amirhossein-y-6ba230102/" target="_blank" aria-label="LinkedIn">
                         <i class="fab fa-linkedin"></i>
                     </a>
-                    <a href="https://x.com/ahyavari" target="_blank" aria-label="Twitter">
+                    <a href="https://x.com/ahyavari" target="_blank" aria-label="X">
                         <i class="fab fa-twitter"></i>
                     </a>
                 </div>
@@ -53,7 +115,8 @@
         <nav class="navbar">
             <a href="#about">About</a>
             <a href="#news">News</a>
-            <a href="#publications">Publications</a>
+            <!-- Keep the link, but hide it automatically when showPublications=false -->
+            <a href="#publications" data-nav="publications">Publications</a>
             <!-- <a href="#projects">Projects</a> -->
         </nav>
 
@@ -62,27 +125,57 @@
             <!-- About Section -->
             <section id="about">
                 <h2>About Me</h2>
-                <p>I am a PhD student in the Stephenson School of Biomedical Engineering at the University of Oklahoma, where I have the privilege of being advised by <a href="https://farnazzamani.com/" target="_blank" class="underline-link">Professor Farnaz Zamani</a>. My research focuses on computational and theoretical neuroscience as well as machine learning. Prior to this, I completed my undergraduate studies in Mathematics and its Applications at Sharif University of Technology.</p>
-                <p>My research investigates how cognitive functions relate to the dynamic configuration of large-scale brain networks. I develop and apply computational models to infer the dynamics of cognitive processes from their correlates within high-dimensional brain measurements, focusing on attention, memory and higher-order faculties such as language.</p>
+                <p>
+                    I am a PhD student in the Stephenson School of Biomedical Engineering at the University of Oklahoma.
+                    I am currently advised by
+                    <a href="https://farnazzamani.com/" target="_blank" class="underline-link">Professor Farnaz Zamani</a>.  Prior to this, I completed my undergraduate studies in Mathematics and its Applications at Sharif University of Technology.
+                </p>
+
+                <p>
+                    My research interests are in computational and theoretical neuroscience and machine learning, with an emphasis on
+                    <em>representation</em> and <em>mechanism</em>.
+                    I study questions of <strong>mechanistic identifiability</strong>:
+                    when different systems exhibit similar behavior, what does that resemblance actually constrain about the underlying computation,
+                    and what does it leave open?
+                    I develop geometric and statistical approaches to make these distinctions interpretable and testable.
+                </p>
+
+                <p>
+                    In parallel, I study large-scale brain time series with dynamical-systems and state-space methods, focusing on interpretable structure in population activity.
+                </p>
+
                 <p>Feel free to reach out via email or X if you'd like to discuss research ideas or have a chat!</p>
             </section>
 
             <!-- News Section -->
             <section id="news">
                 <h2>News</h2>
+
+                <div class="news-item">
+                    <span class="date">Nov 2025</span>
+                    <div class="news-content">
+                        Presented at SfN 2025:
+                        <a class="underline-link"
+                           href="https://www.sfn.org/-/media/SfN/Documents/NEW-SfN/Meetings/Neuroscience-2025/Abstracts-and-Sessions/Abstract-PDFs/SFN25_Abstracts-PDF-Posters_WED_PM_Final.pdf#page=1080"
+                           target="_blank" rel="noopener">
+                            Dynamics of Cortico-Subcortical Interactions in Functional Brain Networks
+                        </a>
+                    </div>
+                </div>
+
                 <div class="news-item">
                     <span class="date">Feb 2025</span>
-                    <div class="news-content">Got the third place in the 'American Airlines Operation Research and Advanced Analytics' Hackathon.</div>
+                    <div class="news-content">Got third place in the American Airlines Operation Research and Advanced Analytics Hackathon.</div>
                 </div>
+
                 <div class="news-item">
                     <span class="date">Sep 2024</span>
                     <div class="news-content">Started PhD at University of Oklahoma.</div>
                 </div>
-
             </section>
 
-            <!-- Publications Section -->
-            <section id="publications">
+            <!-- Publications Section (kept, but can be hidden via config flag) -->
+            <section id="publications" data-section="publications">
                 <h2>Selected Publications</h2>
                 <div id="publications-container">
                     <!-- Publications will be loaded here dynamically -->
@@ -90,13 +183,41 @@
             </section>
         </main>
     </div>
-    <!-- 👇 ADD THIS FOOTER SECTION 👇 -->
+
     <footer class="site-footer">
         <p class="quote">'I feel it in the water, I feel it in the earth, I smell it in the air.'</p>
     </footer>
+
+    <!-- ✅ Hide sections + nav links based on SITE_CONFIG (runs before script.js) -->
+    <script>
+      (function () {
+        var cfg = window.SITE_CONFIG || {};
+        var showPubs = !!cfg.showPublications;
+
+        // Hide the publications section
+        var pubsSection = document.querySelector('[data-section="publications"]');
+        if (!showPubs && pubsSection) pubsSection.style.display = 'none';
+
+        // Hide the nav link pointing to publications (keeps markup, just hides)
+        var pubsNav = document.querySelector('[data-nav="publications"]');
+        if (!showPubs && pubsNav) pubsNav.style.display = 'none';
+
+        // Optional: prevent downstream scripts from attempting to render pubs
+        if (!showPubs) window.__DISABLE_PUBLICATIONS__ = false;
+      })();
+    </script>
+
     <!-- JavaScript Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+
     <!-- Your Custom Script -->
     <script src="script.js"></script>
+
+    <!-- ✅ Safeguard: if your script.js tries to render publications, bail out early (non-breaking) -->
+    <script>
+      // If your existing script.js already checks for container existence, this does nothing.
+      // If not, this flag gives you an easy hook to add later without touching HTML again.
+      // Example usage in script.js: if (window.__DISABLE_PUBLICATIONS__) return;
+    </script>
 </body>
 </html>
