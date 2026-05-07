@@ -1,4 +1,15 @@
 main:
+  - title: "Beyond Activation Alignment: The Geometry of Neural Sensitivity"
+    authors:
+      - name: Amirhossein Yavari
+        url: "https://amirhosseinyavari.github.io/"
+      - name: Farnaz Zamani Esfahlani
+        url: "https://farnazzamani.com/"
+    conference_short: Preprint
+    conference: "arXiv preprint, 2026"
+    pdf: https://arxiv.org/pdf/2605.03222
+    image: "assets/images/publications/sensitivity.png"
+
   - title: "Reproduction: Tracking the World State with Recurrent Entity Networks"
     authors:
       - name: Mehrnaz Mofakhami
@@ -12,6 +23,4 @@ main:
     awards:
       - type: "best-poster"
         text: "Best Poster Award"
-      # - type: "top-paper"
-      #   text: "Top 1% of submissions"
     image: "assets/images/publications/entnet.png"
