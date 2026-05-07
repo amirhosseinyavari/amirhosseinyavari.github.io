@@ -1,7 +1,7 @@
 main:
   - title: "Beyond Activation Alignment: The Geometry of Neural Sensitivity"
     authors:
-      - name: Amirhossein Yavari
+      - name: AmirHossein Yavari
         url: "https://amirhosseinyavari.github.io/"
       - name: Farnaz Zamani Esfahlani
         url: "https://farnazzamani.com/"
@@ -14,7 +14,7 @@ main:
     authors:
       - name: Mehrnaz Mofakhami
         url: "https://mhrnz.github.io/"
-      - name: Amirhossein Yavari
+      - name: AmirHossein Yavari
         url: "https://www.example.com/sharonscott"
     conference_short: Preprint
     conference: EEML 2021
