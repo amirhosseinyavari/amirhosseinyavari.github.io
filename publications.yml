@@ -24,3 +24,5 @@ main:
       - type: "best-poster"
         text: "Best Poster Award"
     image: "assets/images/publications/entnet.png"
+
+
