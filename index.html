@@ -1,237 +1,204 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-theme="auto">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AmirHossein Yavari</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;1,500&family=Ubuntu+Mono&display=swap" rel="stylesheet">
+  <meta
+    name="description"
+    content="AmirHossein Yavari — PhD student at the Stephenson School of Biomedical Engineering, University of Oklahoma. Neural population coding, representation geometry, computational neuroscience, and machine learning."
+  />
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <!-- Academicons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <title>AmirHossein Yavari</title>
 
-    <!-- Your Custom Stylesheet -->
-    <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Ubuntu+Mono:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
 
-    <!-- ✅ Site config toggle (edit this later) -->
-    <script>
-      window.SITE_CONFIG = {
-        showPublications: true
-      };
-    </script>
+  <link rel="stylesheet" href="style.css" />
 
-    <!-- ✅ Minimal additions: cleaner backgrounds + dotted background overlay -->
-    <style>
-        /* --- Slightly tinted (less muddy) base backgrounds --- */
-        :root{
-            --page-bg: #f6f6f8;         /* cleaner light background */
-            --dot-color: rgba(25, 28, 32, 0.08);
-            --vignette: rgba(0, 0, 0, 0.04);
-        }
-        @media (prefers-color-scheme: dark){
-            :root{
-                --page-bg: #1e242b;     /* a touch lighter than pure dark */
-                --dot-color: rgba(255, 255, 255, 0.07);
-                --vignette: rgba(0, 0, 0, 0.28);
-            }
-        }
-
-        html, body{
-            background: var(--page-bg);
-        }
-
-        /* --- Dot overlay (evenly spaced) --- */
-        body{
-            position: relative; /* anchors the pseudo elements */
-        }
-        body::before{
-            content: "";
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 0;
-
-            background-image: radial-gradient(circle, var(--dot-color) 1px, transparent 1px);
-            background-size: 22px 22px;
-            background-position: 0 0;
-        }
-
-        /* subtle vignette (very light) */
-        body::after{
-            content: "";
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 0;
-
-            background: radial-gradient(ellipse at center,
-                rgba(0,0,0,0) 0%,
-                rgba(0,0,0,0) 55%,
-                var(--vignette) 100%);
-        }
-
-        /* keep your actual content above the background overlays */
-        .container, .site-footer{
-            position: relative;
-            z-index: 1;
-        }
-    </style>
+  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4/dist/js-yaml.min.js" defer></script>
+  <script src="script.js" defer></script>
 </head>
+
 <body>
-    <div class="container">
-        <!-- Header Section -->
-        <header class="header-container">
-            <img src="assets/images/profile.jpeg" alt="Profile Photo" class="profile-img">
-            <div class="header-content">
-                <h1>AmirHossein Yavari</h1>
-                <p class="position">PhD Student (Biomedical Engineering), University of Oklahoma</p>
-                <p class="email">amirhossein.yavari (at) ou.edu</p>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-                <div class="social-icons">
-                    <a href="https://scholar.google.com/citations?user=3lkPWooAAAAJ&hl=en" target="_blank" aria-label="Google Scholar">
-                        <i class="ai ai-google-scholar"></i>
-                    </a>
-                    <a href="assets/files/Amirhossein__CV.pdf" target="_blank" aria-label="CV">
-                        <i class="ai ai-cv"></i>
-                    </a>
-                    <a href="https://github.com/amirhosseinyavari" target="_blank" aria-label="GitHub">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/amirhossein-y-6ba230102/" target="_blank" aria-label="LinkedIn">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="https://x.com/ahyavari" target="_blank" aria-label="X">
-                        <i class="fa-brands fa-x-twitter"></i>
-                    </a>
-                    <a href="https://bsky.app/profile/ahyavari.bsky.social" target="_blank" aria-label="Bluesky">
-                        <i class="fa-brands fa-bluesky"></i>
-                    </a>
-                </div>
-            </div>
-        </header>
+  <div class="site-shell">
+    <header class="site-top" id="top">
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#news">News</a>
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle color theme">
+          dark
+        </button>
+      </nav>
+    </header>
 
-        <!-- Navigation -->
-        <nav class="navbar">
-            <a href="#about">About</a>
-            <a href="#news">News</a>
-            <!-- Keep the link, but hide it automatically when showPublications=false -->
-            <a href="#publications" data-nav="publications">Publications</a>
-            <!-- <a href="#projects">Projects</a> -->
-        </nav>
+    <main id="main">
+      <section class="hero" aria-label="Profile summary">
+        <aside class="profile-panel" aria-label="Profile photo">
+          <img
+            class="profile-img"
+            src="assets/images/profile.jpeg"
+            alt="Portrait of AmirHossein Yavari"
+          />
+        </aside>
 
-        <!-- Main Content -->
-        <main class="main-content">
-            <!-- About Section -->
-            <section id="about">
-                <h2>About Me</h2>
-                <p>
-                    I am a PhD student in the Stephenson School of Biomedical Engineering at the University of Oklahoma.
-                    I am advised by
-                    <a href="https://farnazzamani.com/" target="_blank" class="underline-link">Professor Farnaz Zamani</a>.  Prior to this, I completed my undergraduate studies in Mathematics and its Applications at Sharif University of Technology.
-                </p>
+        <div class="hero-copy">
+          <p class="eyebrow">PhD Student · Stephenson School of Biomedical Engineering · University of Oklahoma</p>
 
-                <p>
-                    My research interests are in computational and theoretical neuroscience and machine learning, with an emphasis on
-                    <em>representation</em> and <em>mechanism</em>.
-                    I study questions of <strong>mechanistic identifiability</strong>:
-                    when different systems exhibit similar behavior, what does that resemblance actually constrain about the underlying computation,
-                    and what does it leave open?
-                    I develop geometric and statistical approaches to make these distinctions interpretable and testable.
-                </p>
+          <h1>AmirHossein Yavari</h1>
 
-                <p>
-                    In parallel, I study large-scale brain time series with dynamical-systems and state-space methods, focusing on interpretable structure in population activity.
-                </p>
+          <p class="hero-lede">
+            I work on neural population coding and the geometry of neural representations.
+          </p>
 
-                <p>Feel free to reach out via email or X if you'd like to discuss research ideas or have a chat!</p>
-            </section>
+            <p>
+              I am especially interested in mathematical and statistical tools for studying population
+              activity, trial-to-trial variability, and geometric structure in neural recordings and
+              neural network models.
+            </p>
 
-            <!-- News Section -->
-            <section id="news">
-                <h2>News</h2>
-                <div class="news-item">
-                    <span class="date">May 2026</span>
-                    <div class="news-content">
-                        Preprint posted:
-                        <a class="underline-link"
-                           href="https://arxiv.org/abs/2605.03222"
-                           target="_blank" rel="noopener">
-                            Beyond Activation Alignment: The Geometry of Neural Sensitivity
-                        </a>.
-                    </div>
-                </div>
-                <div class="news-item">
-                    <span class="date">Nov 2025</span>
-                    <div class="news-content">
-                        Presented at SfN 2025:
-                        <a class="underline-link"
-                           href="https://www.sfn.org/-/media/SfN/Documents/NEW-SfN/Meetings/Neuroscience-2025/Abstracts-and-Sessions/Abstract-PDFs/SFN25_Abstracts-PDF-Posters_WED_PM_Final.pdf#page=1080"
-                           target="_blank" rel="noopener">
-                            Dynamics of Cortico-Subcortical Interactions in Functional Brain Networks
-                        </a>
-                    </div>
-                </div>
+          <p class="contact-line">amirhossein.yavari (at) ou.edu</p>
 
-                <div class="news-item">
-                    <span class="date">Feb 2025</span>
-                    <div class="news-content">Got third place in the American Airlines Operation Research and Advanced Analytics Hackathon.</div>
-                </div>
+          <div class="link-row" aria-label="External links">
+            <a href="https://scholar.google.com/citations?hl=en&amp;user=3lkPWooAAAAJ">Google Scholar</a>
+            <a href="assets/files/Amirhossein__CV.pdf">CV</a>
+            <a href="https://github.com/amirhosseinyavari">GitHub</a>
+            <a href="https://www.linkedin.com/in/amirhossein-y-6ba230102/">LinkedIn</a>
+            <a href="https://x.com/ahyavari">X</a>
+            <a href="https://bsky.app/profile/ahyavari.bsky.social">Bluesky</a>
+          </div>
+        </div>
+      </section>
 
-                <div class="news-item">
-                    <span class="date">Sep 2024</span>
-                    <div class="news-content">Started PhD at University of Oklahoma.</div>
-                </div>
-            </section>
+      <section id="about" class="section">
+        <div class="section-heading">
+          <h2>About</h2>
+        </div>
 
-            <!-- Publications Section (kept, but can be hidden via config flag) -->
-            <section id="publications" data-section="publications">
-                <h2>Selected Publications</h2>
-                <div id="publications-container">
-                    <!-- Publications will be loaded here dynamically -->
-                </div>
-            </section>
-        </main>
-    </div>
+        <div class="section-body prose">
+          <p>
+            I am a PhD student in the Stephenson School of Biomedical Engineering at the
+            University of Oklahoma, advised by
+            <a href="https://farnazzamani.com/">Prof. Farnaz Zamani Esfahlani</a>. Prior to this,
+            I completed my undergraduate studies in Mathematics and its Applications at Sharif
+            University of Technology.
+          </p>
+
+            <p>
+              My research interests are centered on neural population coding and interpretable
+              structure in population activity. I am interested in how groups of neurons represent
+              sensory, behavioral, and task variables; how structure in those responses is organized
+              across a population; and how sensitivity, variability, and response geometry constrain
+              what can be inferred from neural activity.
+            </p>
+
+            <p>
+              I am also interested in how coding properties vary across brain areas, subjects,
+              stimulus families, model architectures, and time. This direction connects with broader
+              work in <a href="https://bond-lab.com/">our group</a> on brain dynamics, functional
+              organization, and network-level structure, especially in settings where the stability of
+              population-level measurements matters.
+            </p>
+        </div>
+      </section>
+
+      <section id="research" class="section">
+        <div class="section-heading">
+          <h2>Research</h2>
+        </div>
+
+        <div class="research-grid">
+          <article class="research-card">
+            <h3>Neural population coding</h3>
+            <p>
+              How populations represent sensory, behavioral, and task variables; how structure is
+              distributed across neurons; and how sensitivity, variability, and covariance shape
+              what can be inferred from population activity.
+            </p>
+          </article>
+
+          <article class="research-card">
+            <h3>Dynamics, state, and drift</h3>
+            <p>
+              How neural codes change across trials, sessions, learning, context, and internal state,
+              and when population-level measurements remain stable enough to support comparison
+              across time.
+            </p>
+          </article>
+
+          <article class="research-card">
+            <h3>Representation geometry</h3>
+            <p>
+              How the geometry of population responses relates to sensitivity, invariance, ambiguity,
+              and decodability, and how geometric descriptions can clarify what is being compared
+              across systems.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="publications" class="section publications-section">
+        <div class="section-heading">
+          <h2>Selected Publications</h2>
+        </div>
+
+        <div id="publications-container" class="publications-list" aria-live="polite">
+          <p class="muted">Loading publications…</p>
+        </div>
+      </section>
+
+      <section id="news" class="section">
+        <div class="section-heading">
+          <h2>News</h2>
+        </div>
+
+        <div class="news-list">
+          <article class="news-item">
+            <time datetime="2026-05">May 2026</time>
+            <p>
+              Preprint posted:
+              <a href="https://arxiv.org/abs/2605.03222">
+                Beyond Activation Alignment: The Geometry of Neural Sensitivity
+              </a>.
+            </p>
+          </article>
+
+          <article class="news-item">
+            <time datetime="2025-11">Nov 2025</time>
+            <p>
+              Presented at SfN 2025:
+              <a href="https://www.sfn.org/meetings/neuroscience-2025">
+                Dynamics of Cortico-Subcortical Interactions in Functional Brain Networks
+              </a>.
+            </p>
+          </article>
+
+          <article class="news-item">
+            <time datetime="2025-02">Feb 2025</time>
+            <p>Third place, American Airlines Operation Research and Advanced Analytics Hackathon.</p>
+          </article>
+
+          <article class="news-item">
+            <time datetime="2024-09">Sep 2024</time>
+            <p>Started PhD at the University of Oklahoma.</p>
+          </article>
+        </div>
+      </section>
+    </main>
 
     <footer class="site-footer">
-        <p class="quote">'I feel it in the water, I feel it in the earth, I smell it in the air.'</p>
+      <p class="quote">
+        “I feel it in the water, I feel it in the earth, I smell it in the air.”
+      </p>
     </footer>
-
-    <!-- ✅ Hide sections + nav links based on SITE_CONFIG (runs before script.js) -->
-    <script>
-      (function () {
-        var cfg = window.SITE_CONFIG || {};
-        var showPubs = !!cfg.showPublications;
-
-        // Hide the publications section
-        var pubsSection = document.querySelector('[data-section="publications"]');
-        if (!showPubs && pubsSection) pubsSection.style.display = 'none';
-
-        // Hide the nav link pointing to publications (keeps markup, just hides)
-        var pubsNav = document.querySelector('[data-nav="publications"]');
-        if (!showPubs && pubsNav) pubsNav.style.display = 'none';
-
-        // Optional: prevent downstream scripts from attempting to render pubs
-        if (!showPubs) window.__DISABLE_PUBLICATIONS__ = false;
-      })();
-    </script>
-
-    <!-- JavaScript Libraries -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
-
-    <!-- Your Custom Script -->
-    <script src="script.js"></script>
-
-    <!-- ✅ Safeguard: if your script.js tries to render publications, bail out early (non-breaking) -->
-    <script>
-      // If your existing script.js already checks for container existence, this does nothing.
-      // If not, this flag gives you an easy hook to add later without touching HTML again.
-      // Example usage in script.js: if (window.__DISABLE_PUBLICATIONS__) return;
-    </script>
+  </div>
 </body>
 </html>

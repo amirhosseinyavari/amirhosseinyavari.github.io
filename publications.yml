@@ -6,8 +6,9 @@ main:
       - name: Farnaz Zamani Esfahlani
         url: "https://farnazzamani.com/"
     conference_short: Preprint
-    conference: "arXiv preprint, 2026"
-    pdf: https://arxiv.org/pdf/2605.03222
+    conference: "arXiv, 2026"
+    pdf: "https://arxiv.org/pdf/2605.03222"
+    code: "https://github.com/amirhosseinyavari/neural-sensitivity-geometry"
     image: "assets/images/publications/sensitivity.png"
 
   - title: "Reproduction: Tracking the World State with Recurrent Entity Networks"
@@ -15,14 +16,12 @@ main:
       - name: Mehrnaz Mofakhami
         url: "https://mhrnz.github.io/"
       - name: AmirHossein Yavari
-        url: "https://www.example.com/sharonscott"
-    conference_short: Preprint
-    conference: EEML 2021
-    pdf: https://mhrnz.github.io/pdfs/EntNet_reproduction.pdf
-    code: https://github.com/mhrnz/entnet_bAbI_reproduction
+        url: "https://amirhosseinyavari.github.io/"
+    conference_short: EEML
+    conference: "2021"
+    pdf: "https://mhrnz.github.io/pdfs/EntNet_reproduction.pdf"
+    code: "https://github.com/mhrnz/entnet_bAbI_reproduction"
     awards:
       - type: "best-poster"
         text: "Best Poster Award"
     image: "assets/images/publications/entnet.png"
-
-
